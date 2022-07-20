@@ -6,6 +6,10 @@ Travelog is a full CRUD Web application that stores and handles travel logs of u
 
 ## Screenshots
 
+### Trello
+
+![Screenshot](trello.png)
+
 ### Wireframes
 
 ![Screenshot](LandingPage.png)
