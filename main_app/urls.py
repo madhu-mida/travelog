@@ -13,4 +13,5 @@ urlpatterns = [
          views.PlaceDelete.as_view(), name='places_delete'),
     path('places/<int:place_id>/add_photo/',
          views.add_photo, name='add_photo'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]

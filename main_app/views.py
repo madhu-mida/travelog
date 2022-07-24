@@ -3,6 +3,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Place, Photo
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 import uuid
 import boto3
 S3_BASE_URL = 'https://s3-us-west-1.amazonaws.com/'
@@ -34,16 +38,19 @@ def about(request):
     return render(request, 'about.html')
 
 
+@login_required
 def places_index(request):
-    places = Place.objects.all()
+    places = Place.objects.filter(user=request.user)
     return render(request, 'places/index.html', {'places': places})
 
 
+@login_required
 def places_detail(request, place_id):
     place = Place.objects.get(id=place_id)
     return render(request, 'places/detail.html', {'place': place})
 
 
+@login_required
 def add_photo(request, place_id):
     # photo-file will be the "name" attribute on the <input type="file">
     photo_file = request.FILES.get('photo-file', None)
@@ -65,17 +72,41 @@ def add_photo(request, place_id):
     return redirect('detail', place_id=place_id)
 
 
-class PlaceCreate(CreateView):
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        # This is how to create a 'user' form object
+        # that includes the data from the browser
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            # This will add the user to the database
+            user = form.save()
+            # This is how we log a user in via code
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    # A bad POST or a GET request, so render signup.html with an empty form
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'registration/signup.html', context)
+
+
+class PlaceCreate(LoginRequiredMixin, CreateView):
     model = Place
     fields = '__all__'
     success_url = '/places/'
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
-class PlaceUpdate(UpdateView):
+
+class PlaceUpdate(LoginRequiredMixin, UpdateView):
     model = Place
     fields = ['cityName', 'fromDate', 'toDate', 'highlights']
 
 
-class PlaceDelete(DeleteView):
+class PlaceDelete(LoginRequiredMixin, DeleteView):
     model = Place
     success_url = '/places/'
