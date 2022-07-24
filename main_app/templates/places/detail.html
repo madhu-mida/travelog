@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Place Details</h1>
+
+<div class="card">
+    <div class="card-content">
+        <span class="card-title">{{ place.cityName }}</span>
+        <p>From Date: {{ place.fromDate }}</p>
+        <p>To Date: {{ place.toDate }}</p>
+        <p>Highlights: {{ place.highlights}}</p>
+    </div>
+    <div class="card-action">
+        <a href="{% url 'places_update' place.id %}">Edit</a>
+        <a href="{% url 'places_delete' place.id %}">Delete</a>
+    </div>
+</div>
+
+{% endblock %}

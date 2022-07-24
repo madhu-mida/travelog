@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Place List</h1>
+
+{% for place in places %}
+<a href="{% url 'detail' place.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ place.cityName }}</span>
+            <p>From Date: {{ place.fromDate }}</p>
+            <p>To Date: {{ place.toDate }}</p>
+            <p>Highlights: {{ place.highlights }}</p>
+        </div>
+</a>
+</div>
+{% endfor %}
+
+{% endblock %}
