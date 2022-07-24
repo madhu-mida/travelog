@@ -11,4 +11,6 @@ urlpatterns = [
          views.PlaceUpdate.as_view(), name='places_update'),
     path('places/<int:pk>/delete/',
          views.PlaceDelete.as_view(), name='places_delete'),
+    path('places/<int:place_id>/add_photo/',
+         views.add_photo, name='add_photo'),
 ]
