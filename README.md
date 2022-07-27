@@ -18,13 +18,23 @@ Travelog is a full CRUD Web application that stores and handles travel logs of u
 
 ## Screenshots
 
+### Login Page
+
 ![Screenshot](login.png)
+
+### Home Page
 
 ![Screenshot](index.png)
 
+### Create Page
+
 ![Screenshot](create.png)
 
+### Edit Page
+
 ![Screenshot](edit.png)
+
+### Show Page
 
 ![Screenshot](show.png)
 
