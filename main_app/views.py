@@ -94,8 +94,9 @@ def signup(request):
 
 class PlaceCreate(LoginRequiredMixin, CreateView):
     model = Place
-    fields = '__all__'
-    success_url = '/places/'
+    fields = ['cityName', 'fromDate', 'toDate', 'highlights']
+    # fields = '__all__'
+    # success_url = '/places/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user

@@ -21,6 +21,7 @@ img {
 
 .tv-card-img {
     min-height: 170px;
+    max-height: 170px;
 }
 
 .tv-card-content {
