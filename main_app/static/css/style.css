@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Padauk', sans-serif;
 }
   
 main {
@@ -11,4 +12,14 @@ main {
 footer {
     padding-top: 0;
     text-align: right;
+    font-family: 'Padauk', sans-serif;
 }
+
+img {
+    width: 100%;
+}
+
+/* @font-face {
+    font-family: 'Padauk', sans-serif;
+    src: url("https://fonts.googleapis.com");
+} */
