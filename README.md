@@ -55,7 +55,7 @@ CSS
 
 [Click Here](https://trello.com/b/zgEqbinz/travelog) to view Trello Board.
 
-[Click Here](https://silver-snacks-emporium.herokuapp.com/products) to see deployed Heroku app.
+[Click Here](https://travelog-ms-95.herokuapp.com/ ) to see deployed Heroku app.
 
 
 ---

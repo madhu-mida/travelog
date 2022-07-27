@@ -2,7 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-    font-family: 'Padauk', sans-serif;
+    font-family: 'Bitter', serif;
 }
   
 main {
@@ -17,6 +17,14 @@ footer {
 
 img {
     width: 100%;
+}
+
+.tv-card-img {
+    min-height: 170px;
+}
+
+.tv-card-content {
+    min-height: 140px;
 }
 
 /* @font-face {
